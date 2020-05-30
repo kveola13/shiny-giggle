@@ -17,4 +17,9 @@ public class FakeUnitDataAccessService implements UnitDao {
         database.add(new Unit(id, unit.getName()));
         return 1;
     }
+
+    @Override
+    public List<Unit> selectAllUnits(){
+        return database;
+    }
 }

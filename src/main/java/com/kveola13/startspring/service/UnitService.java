@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UnitService {
     private final UnitDao unitDao;
@@ -15,7 +17,11 @@ public class UnitService {
         this.unitDao = unitDao;
     }
 
-    public int addUnit(Unit unit){
+    public int addUnit(Unit unit) {
         return unitDao.insertUnit(unit);
+    }
+
+    public List<Unit> getAllUnits() {
+        return unitDao.selectAllUnits();
     }
 }

@@ -3,10 +3,11 @@ package com.kveola13.startspring.api;
 import com.kveola13.startspring.model.Unit;
 import com.kveola13.startspring.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@RequestMapping("/api/v1/unit")
 @RestController
 public class UnitController {
     private final UnitService unitService;
@@ -19,5 +20,10 @@ public class UnitController {
     @PostMapping
     public void addUnit(@RequestBody Unit unit) {
         unitService.addUnit(unit);
+    }
+
+    @GetMapping
+    public List<Unit> getAllUnits(){
+        return unitService.getAllUnits();
     }
 }
