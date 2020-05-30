@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RequestMapping("/api/v1/unit")
 @RestController
@@ -23,7 +25,12 @@ public class UnitController {
     }
 
     @GetMapping
-    public List<Unit> getAllUnits(){
+    public List<Unit> getAllUnits() {
         return unitService.getAllUnits();
+    }
+
+    @GetMapping
+    public Unit getUnitById(UUID id) {
+        return unitService.getUnitById(id).orElse(null);
     }
 }

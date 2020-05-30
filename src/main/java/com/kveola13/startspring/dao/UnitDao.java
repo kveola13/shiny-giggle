@@ -3,6 +3,7 @@ package com.kveola13.startspring.dao;
 import com.kveola13.startspring.model.Unit;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface UnitDao {
@@ -14,4 +15,10 @@ public interface UnitDao {
     }
 
     List<Unit> selectAllUnits();
+
+    Optional<Unit> selectPersonById(UUID id);
+
+    int deleteUnitById(UUID id);
+
+    int updateUnitById(UUID id, Unit unit);
 }

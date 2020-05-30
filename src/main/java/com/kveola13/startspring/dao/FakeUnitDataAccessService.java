@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository("fakeDao")
@@ -19,7 +20,22 @@ public class FakeUnitDataAccessService implements UnitDao {
     }
 
     @Override
-    public List<Unit> selectAllUnits(){
+    public List<Unit> selectAllUnits() {
         return database;
+    }
+
+    @Override
+    public Optional<Unit> selectPersonById(UUID id) {
+        return database.stream().filter(unit -> unit.getId().equals(id)).findFirst();
+    }
+
+    @Override
+    public int deleteUnitById(UUID id) {
+        return 0;
+    }
+
+    @Override
+    public int updateUnitById(UUID id, Unit unit) {
+        return 0;
     }
 }
