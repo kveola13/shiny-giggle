@@ -1,12 +1,15 @@
 package com.kveola13.startspring.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class Unit {
     private final UUID id;
     private final String name;
 
-    public Unit(UUID id, String name) {
+    public Unit(@JsonProperty("id") UUID id,
+                @JsonProperty("name") String name) {
         this.id = id;
         this.name = name;
     }
