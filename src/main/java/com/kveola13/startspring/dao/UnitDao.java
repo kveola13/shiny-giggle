@@ -7,7 +7,7 @@ import java.util.UUID;
 public interface UnitDao {
     int insertUnit(UUID id, Unit unit);
 
-    default int addUnit(Unit unit) {
+    default int insertUnit(Unit unit) {
         UUID id = UUID.randomUUID();
         return insertUnit(id, unit);
     }
