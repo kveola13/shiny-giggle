@@ -16,7 +16,7 @@ public interface UnitDao {
 
     List<Unit> selectAllUnits();
 
-    Optional<Unit> selectPersonById(UUID id);
+    Optional<Unit> selectUnitById(UUID id);
 
     int deleteUnitById(UUID id);
 

@@ -28,6 +28,14 @@ public class UnitService {
     }
 
     public Optional<Unit> getUnitById(UUID id) {
-        return unitDao.selectPersonById(id);
+        return unitDao.selectUnitById(id);
+    }
+
+    public int deleteUnit(UUID id) {
+        return unitDao.deleteUnitById(id);
+    }
+
+    public int updateUnit(UUID id, Unit updatedUnit) {
+        return unitDao.updateUnitById(id, updatedUnit);
     }
 }
