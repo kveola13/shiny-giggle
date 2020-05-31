@@ -33,4 +33,14 @@ public class UnitController {
     public Unit getUnitById(@PathVariable("id") UUID id) {
         return unitService.getUnitById(id).orElse(null);
     }
+
+    @DeleteMapping(path = "{id}")
+    public void deleteUnitById(@PathVariable("id") UUID id) {
+        unitService.deleteUnit(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updateUnit(@PathVariable("id") UUID id, @RequestBody Unit unitToUpdate) {
+        unitService.updateUnit(id, unitToUpdate);
+    }
 }

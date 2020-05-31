@@ -40,11 +40,11 @@ public class FakeUnitDataAccessService implements UnitDao {
     }
 
     @Override
-    public int updateUnitById(UUID id, Unit unit) {
-        return selectUnitById(id).map(u -> {
+    public int updateUnitById(UUID id, Unit update) {
+        return selectUnitById(id).map(unit -> {
             int indexOfUnitToUpdate = database.indexOf(unit);
             if (indexOfUnitToUpdate >= 0) {
-                database.set(indexOfUnitToUpdate, unit);
+                database.set(indexOfUnitToUpdate, new Unit(id, update.getName()));
                 return 1;
             }
             return 0;
