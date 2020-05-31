@@ -25,17 +25,29 @@ public class FakeUnitDataAccessService implements UnitDao {
     }
 
     @Override
-    public Optional<Unit> selectPersonById(UUID id) {
+    public Optional<Unit> selectUnitById(UUID id) {
         return database.stream().filter(unit -> unit.getId().equals(id)).findFirst();
     }
 
     @Override
     public int deleteUnitById(UUID id) {
-        return 0;
+        Optional<Unit> optionalUnit = selectUnitById(id);
+        if (optionalUnit.isEmpty()) {
+            return 0;
+        }
+        database.remove(optionalUnit.get());
+        return 1;
     }
 
     @Override
     public int updateUnitById(UUID id, Unit unit) {
-        return 0;
+        return selectUnitById(id).map(u -> {
+            int indexOfUnitToUpdate = database.indexOf(unit);
+            if (indexOfUnitToUpdate >= 0) {
+                database.set(indexOfUnitToUpdate, unit);
+                return 1;
+            }
+            return 0;
+        }).orElse(0);
     }
 }

@@ -29,8 +29,8 @@ public class UnitController {
         return unitService.getAllUnits();
     }
 
-    @GetMapping
-    public Unit getUnitById(UUID id) {
+    @GetMapping(path = "{id}")
+    public Unit getUnitById(@PathVariable("id") UUID id) {
         return unitService.getUnitById(id).orElse(null);
     }
 }
