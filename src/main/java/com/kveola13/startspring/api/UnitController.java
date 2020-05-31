@@ -3,8 +3,10 @@ package com.kveola13.startspring.api;
 import com.kveola13.startspring.model.Unit;
 import com.kveola13.startspring.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -40,7 +42,10 @@ public class UnitController {
     }
 
     @PutMapping(path = "{id}")
-    public void updateUnit(@PathVariable("id") UUID id, @RequestBody Unit unitToUpdate) {
+    public void updateUnit(@PathVariable("id") UUID id,
+                           @Valid
+                           @NonNull
+                           @RequestBody Unit unitToUpdate) {
         unitService.updateUnit(id, unitToUpdate);
     }
 }
